@@ -40,14 +40,13 @@ def part_jieba(mypath):
         for line in f:
             label_list.append(line.split('\t')[0])#tab前的数字标签数字部分
             data=line.split('\t')[1]#tab后的数据部分
-            ddata=[x for x in jieba.cut(data)]#用jieba分割句子
+            second_data=[x for x in jieba.cut(data)]#用jieba分割句子
             #print(ddata)
-            dddata=''#这里使用字符串存储每个句子是为了方便后面tfidf的得出
             # for i in range(len(ddata)): #去停用词
             #     if ddata[i] not in m:
             #         dddata+=ddata[i]+' '
-            dddata=[ddata[i] for i in range(len(ddata)) if ddata[i] not in m]
-            corpus_list.append(str(dddata))#讲每个句子存入list中
+            third_data=[second_data[i] for i in range(len(second_data)) if second_data[i] not in m]
+            corpus_list.append(str(third_data))#讲每个句子存入list中
     return label_list,corpus_list
     print(label_list)
 ######################方法2：使用pyltp分词#################
@@ -60,14 +59,14 @@ def part_pyltp(mypath):
         for line in f:
             label_list.append(line.split('\t')[0])#tab前的数字标签数字部分
             data=line.split('\t')[1]#tab后的数据部分
-            ddata=[x for x in list(segmentor.segment(data))]#用jieba分割句子
+            second_data=[x for x in list(segmentor.segment(data))]#用jieba分割句子
             #print(ddata)
-            dddata=''#这里使用字符串存储每个句子是为了方便后面tfidf的得出
-            for i in range(len(ddata)): #去停用词
-                if ddata[i] not in m:
-                    dddata+=ddata[i]+' '
+            third_data=''#这里使用字符串存储每个句子是为了方便后面tfidf的得出
+            for i in range(len(second_data)): #去停用词
+                if second_data[i] not in m:
+                    third_data+=second_data[i]+' '
 
-            corpus_list.append(str(dddata))#讲每个句子存入list中
+            corpus_list.append(str(third_data))#讲每个句子存入list中
 
 
 
