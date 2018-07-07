@@ -34,13 +34,6 @@ m=stopwordslist('data\stopwords.txt')
 '''
 def part_jieba(mypath):
 ##################方法1，使用jieba分词#######################
-#f=open('C:/Users/Tina/Desktop/samples/train_set.txt').read()
-#ff=open('C:/Users/Tina/Desktop/samples/test_set.txt').read()
-#
-#jieba.enable_parallel(5)
-#mf=[x for x in jieba.cut(f)]
-#测试作用
-
     label_list=[] #用来存标签
     corpus_list=[] #用来存句子
     with open(mypath,encoding='utf-8') as f:
@@ -58,23 +51,23 @@ def part_jieba(mypath):
     return label_list,corpus_list
     print(label_list)
 ######################方法2：使用pyltp分词#################
-# def part_pyltp(mypath):
-#     from pyltp import Segmentor
-#     segmentor=Segmentor()#定义分词函数
-#     segmentor.load()
-#
-#     with open(mypath) as f:
-#         for line in f:
-#             label_list.append(line.split('\t')[0])#tab前的数字标签数字部分
-#             data=line.split('\t')[1]#tab后的数据部分
-#             ddata=[x for x in list(segmentor.segment(data))]#用jieba分割句子
-#             #print(ddata)
-#             dddata=''#这里使用字符串存储每个句子是为了方便后面tfidf的得出
-#             for i in range(len(ddata)): #去停用词
-#                 if ddata[i] not in m:
-#                     dddata+=ddata[i]+' '
-#
-#             corpus_list.append(str(dddata))#讲每个句子存入list中
+def part_pyltp(mypath):
+    from pyltp import Segmentor
+    segmentor=Segmentor()#定义分词函数
+    segmentor.load()
+
+    with open(mypath) as f:
+        for line in f:
+            label_list.append(line.split('\t')[0])#tab前的数字标签数字部分
+            data=line.split('\t')[1]#tab后的数据部分
+            ddata=[x for x in list(segmentor.segment(data))]#用jieba分割句子
+            #print(ddata)
+            dddata=''#这里使用字符串存储每个句子是为了方便后面tfidf的得出
+            for i in range(len(ddata)): #去停用词
+                if ddata[i] not in m:
+                    dddata+=ddata[i]+' '
+
+            corpus_list.append(str(dddata))#讲每个句子存入list中
 
 
 
