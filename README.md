@@ -20,9 +20,9 @@ The 9 types of corresponding labels are as follows:
    66 articles were selected as the test set, the remaining 567 as training set, and 33 articles selected randomly from the training set as the validation set.
    
    **dataset**：
-   [train_set](https://github.com/EnochMHforever/text_classification/tree/master/data/raw_dataset/trainset.txt) ／
-   [test_set](https://github.com/EnochMHforever/text_classification/tree/master/data/raw_dataset/testset.txt) ／
-   [validation set](https://github.com/EnochMHforever/text_classification/tree/master/data/raw_dataset/valid.txt)
+   [train_set](https://github.com/EnochMHforever/event_extractation/blob/master/data/train_set.txt) ／
+   [test_set](https://github.com/EnochMHforever/event_extractation/blob/master/data/test_set.txt) ／
+   [validation set](https://github.com/EnochMHforever/event_extractation/blob/master/data/valid_set.txt)
    
     The way is to read the XML file from "etree", find the corresponding tag by "Find", and "XPath" return the content that needs to be tagged.
 	There's also three main ways to analyse the XML file for python which are dom,sax and etree.In all these ways,etree is the most convinent,so that I choose etree and dom to analyse.
